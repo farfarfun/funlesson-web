@@ -12,6 +12,9 @@
     "bin",
     "server"
   ],
+  "publishConfig": {
+    "registry": "https://packages.aliyun.com/5fc5eb115dbd287006145e5f/npm/funnpm/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
