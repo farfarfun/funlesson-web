@@ -1,6 +1,6 @@
 {
   "name": "funlesson-web",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "funlesson 的 Web 界面：填入课程链接，查看生成的大纲/思维导图/架构图，下载 PPT",
   "type": "module",
   "packageManager": "pnpm@12.1.0",
