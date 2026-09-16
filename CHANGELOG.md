@@ -2,6 +2,15 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/) 格式。
 
+## [未发布]
+
+### Changed
+
+- 开发态端口改为 `8812`，默认后端地址改为 `http://127.0.0.1:18812`
+- 新增内置反代服务（`server/`、`bin/cli.js`，逻辑照搬 funflix-web）：生产环境
+  用 `funlesson-web server start` 一条命令同时托管静态文件和反代 `/api`，
+  支持 start/stop/restart/status
+
 ## [0.1.0] - 2026-09-16
 
 ### Added
