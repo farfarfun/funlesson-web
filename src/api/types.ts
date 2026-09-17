@@ -47,6 +47,7 @@ export interface CourseJob {
   url: string
   status: CourseStatus
   step: string | null
+  progress: number | null
   error: string | null
   result?: CourseResult
 }

@@ -32,6 +32,15 @@ const statusText = computed(() => {
   return '完成'
 })
 
+// 只有语音转写（asr）这一步有 whisper 内部逐帧算出来的精确百分比，
+// 其余步骤仍然只是"进行中"这个粗粒度信息，用不确定态的转圈表示。
+const asrPercentage = computed(() => {
+  if (!job.value) return null
+  if (job.value.status !== 'running' || job.value.step !== 'asr') return null
+  if (job.value.progress == null) return null
+  return Math.round(job.value.progress * 100)
+})
+
 async function poll() {
   try {
     job.value = await getCourse(props.id)
@@ -56,7 +65,16 @@ onBeforeUnmount(() => {
     <template v-else>
       <n-h2>{{ job?.result?.outline.title || job?.url || id }}</n-h2>
       <n-p>{{ statusText }}</n-p>
-      <n-spin v-if="job?.status === 'pending' || job?.status === 'running'" size="large" />
+      <n-progress
+        v-if="asrPercentage !== null"
+        type="line"
+        :percentage="asrPercentage"
+        :processing="asrPercentage < 100"
+      />
+      <n-spin
+        v-else-if="job?.status === 'pending' || job?.status === 'running'"
+        size="large"
+      />
 
       <div v-if="job?.status === 'done' && job.result" class="result">
         <n-tabs type="line" animated>
