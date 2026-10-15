@@ -66,10 +66,6 @@ funlesson-web server stop
 
 见 [`CHANGELOG.md`](CHANGELOG.md)。
 
-## 许可证
-
-MIT
-
 ---
 
 ## 关于 farfarfun
